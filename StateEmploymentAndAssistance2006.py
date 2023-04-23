@@ -77,6 +77,8 @@ print(mean_perc_d)
 state_assistance_prop = grouped_df['state_assistance'].mean()
 state_assistance_perc = round(state_assistance_prop * 100, 2)
 print(state_assistance_perc)
+state_assistance_perc = state_assistance_perc.reset_index(drop=False) #reseting index
+state_assistance_perc.to_csv('state_assistance_perc.csv', index=False) #saving to csv
 
 #%% **State Employment Comparison by Country Type**
 
