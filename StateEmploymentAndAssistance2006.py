@@ -26,7 +26,7 @@ df = pd.read_csv('cleaned_dataset2006.csv')
 df['countryname'] = df['countryname'].str.capitalize()
 replacement_dict = {'Czechrep': "Czech Rep", 'Fyrom': 'North Macedonia', "Slovakia": "Slovak Rep", 'Bosnia':"Bosnia and Herz."}
 df['countryname'] = df['countryname'].replace(replacement_dict)
-x = 0.85 #defining the weight assigned by EBRD
+df["StateEmployedMC"] = df['stateemployment']*df["MiddleClass"]
 
 #%%Calculating Share of State Employment per Country
 
@@ -34,14 +34,12 @@ x = 0.85 #defining the weight assigned by EBRD
 #It then calculates the mean of the 'state_emp_now' column for each country using the mean() 
 #method on the groupby object, and stores the result in a new object called state_employment_prop.
 grouped_df = df.groupby('countryname')
-state_employment_prop = grouped_df['state_emp_now'].mean()
-
+state_employment_prop = grouped_df['stateemployment'].mean()
 #Next, it multiplies state_employment_prop by 100 and rounds the result to 2 decimal places 
 #using the round() function, which creates a new object called state_employment_perc. 
 #This step is converting the state employment mean from a proportion to a percentage.
 state_employment_perc = round(state_employment_prop * 100, 2)
 print(state_employment_perc)
-
 #Finally, we save it as a CSV file called 'state_employment_perc.csv' using the to_csv() 
 #method with index=True argument. We will use the csv file to create employment map
 state_employment_perc.to_csv('state_employment_perc.csv', index=True)
@@ -77,16 +75,16 @@ print(mean_perc_d)
 state_assistance_prop = grouped_df['state_assistance'].mean()
 state_assistance_perc = round(state_assistance_prop * 100, 2)
 print(state_assistance_perc)
-state_assistance_perc = state_assistance_perc.reset_index(drop=False) #reseting index
-state_assistance_perc.to_csv('state_assistance_perc.csv', index=False) #saving to csv
+#state_assistance_perc = state_assistance_perc.reset_index(drop=False) #reseting index
+state_assistance_perc.to_csv('state_assistance_perc.csv', index=True) #saving to csv
 
 #%% **State Employment Comparison by Country Type**
 
 plt.rcParams['font.family'] = 'Times New Roman'
 sns.set(style="whitegrid")
 fig, ax = plt.subplots(figsize=(8, 6))
-sns.barplot(x=['Non-Democratic Countries', 'Democratic Countries'], y=[mean_perc_n, mean_perc_d], ax=ax, palette=['orange', 'red'], alpha=0.7)
-ax.set(title='Average Percentage of State-Employed People by Country Type', xlabel='Country Type', ylabel='Percent Employed in Public Sector ')
+sns.barplot(x=['Non-Democratic Countries', 'Democratic Countries'], y=[mean_perc_n, mean_perc_d], ax=ax, palette=['red', 'black'], alpha=0.8)
+ax.set(title='Average Percentage of Public Employment by Country Type', xlabel='Country Type', ylabel='Percent Employed in Public Sector ')
 plt.ylim(0, max(mean_perc_n, mean_perc_d) + 5)
 
 # add values to the bars
@@ -124,8 +122,8 @@ plt.show()
 
 #%%  Calculating Share of State-Employment in Middle Class in whole sample
 
-grouped_df = df.groupby('countryname')[['MiddleClass', 'state_emp_middleclass']].sum()
-state_emp_mc_share = grouped_df['state_emp_middleclass'] / grouped_df['MiddleClass']*x
+grouped_df = df.groupby('countryname')[['MiddleClass', 'StateEmployedMC']].sum()
+state_emp_mc_share = grouped_df['StateEmployedMC'] / grouped_df['MiddleClass']
 print(state_emp_mc_share)
 
 #%% Calculating Mean Share of State-Employment in Middle Class for Non Democracies
@@ -140,5 +138,26 @@ mean_share_dems= democracies_emp_mc_share.mean() # calculating the mean percenta
 mean_share_dems = round(mean_share_dems, 2)
 print(mean_share_dems)
 
+#%%
 
+# Define a list of colors for each country
+colors = ['red' if country in ['Belarus', 'Russia', 'Bosnia and Herz.', 'Armenia', 'Azerbaijan', 'Kazakhstan', 'Kyrgyzstan', 'Tajikistan', 'Uzbekistan'] else 'black' for country in state_emp_mc_share.index]
+# Set background to white
+sns.set(style="white")
+# Create a bar chart with the state_emp_mc_share values and colored bars
+plt.bar(state_emp_mc_share.index, state_emp_mc_share, color=colors)
+
+# Set the title and labels for the chart
+plt.title('Share of Public Employment in Middle Class by Country')
+plt.xlabel('Country')
+plt.ylabel('Share of Public Employment in Middle Class')
+
+# Set the x-axis labels explicitly
+plt.xticks(state_emp_mc_share.index, rotation=90, fontsize=5.5)
+
+# Saving
+plt.savefig('PublicEmploymentShareMiddleClass.png', dpi=300)
+
+# Display the chart
+plt.show()
 

@@ -26,14 +26,16 @@ import pandas as pd
 
 world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
 world = world[['name', 'continent', 'geometry', 'pop_est', 'gdp_md_est']]
+replacement_dict = {'Czechia': "Czech Rep",  "Slovakia": "Slovak Rep"}
+world['name'] = world['name'].replace(replacement_dict)
 
 
 #defining ex communist countries in Europe and Central Asia. The list unites 15 ex USSR republics
 #and post-communist countries in Europe and Central Asia
-ex_communist_eurasia = ['Russia', 'Ukraine', 'Belarus', 'Kyrgyzstan', 'Azerbaijan', 'Tajikistan', 'Armenia', \
-           'Georgia', 'Kazakhstan', 'Lithuania', 'Latvia', 'Estonia', 'Uzbekistan', 'Bulgaria', 'Albania', 
-           'Moldova', 'Montenegro', 'Poland', 'Romania', 'North Macedonia', 'Serbia', 'Hungary',
-           'Slovak Republic', 'Slovenia', 'Bosnia and Herz.', 'Czechia', 'Croatia']
+ex_communist_eurasia = ['Albania', 'Bulgaria', 'Croatia', 'Czech Rep', 'Estonia', 'Georgia','Hungary', 
+                        'Latvia', 'Lithuania', 'North Macedonia', 'Moldova' ,'Montenegro', 'Poland', 'Romania', 
+                        'Serbia', 'Slovak Rep', 'Slovenia', 'Ukraine', 'Belarus', 'Russia', 'Bosnia and Herz.', 
+                        'Armenia', 'Azerbaijan', 'Kazakhstan', 'Kyrgyzstan', 'Tajikistan', 'Uzbekistan']
 
 
 #%%manipulate russia's geometry
@@ -67,8 +69,8 @@ print(merged_data["_merge"].value_counts())
 #%% Creating heatmap
 
 fig, ax = plt.subplots(figsize=(10, 10))
-merged_data.plot(column='state_emp_now', legend=True, ax=ax, cmap='Reds')
-ax.set_title('Share of Public Employment in\n26 Post-Communist Countries in Europe and Central Asia', fontsize=16)
+merged_data.plot(column='stateemployment', legend=True, ax=ax, cmap='Reds')
+ax.set_title('Share of Public Employment in\n27 Post-Communist Countries in Europe and Central Asia', fontsize=16)
 ax.set_axis_off()  # Hide the axis lines and labels
 # Add country names as annotations
 for i, country in enumerate(merged_data['name']):

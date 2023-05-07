@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Apr  6 20:13:01 2023
-
-@author: anano
-"""
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -17,7 +12,7 @@ import geopandas as gpd
 
 state_assistance_perc = pd.read_csv('state_assistance_perc.csv')
 state_assistance_perc["countryname"] = state_assistance_perc["countryname"].str.capitalize()
-replacement_dict = {'Czechrep': "Czechia", 'Fyrom': 'North Macedonia', "Slovakia": "Slovak Republic", 'Bosnia':"Bosnia and Herz."}
+replacement_dict = {'Czech rep': "Czech Rep", 'North macedonia': 'North Macedonia', "Slovak rep": "Slovak Rep", 'Bosnia and herz.':"Bosnia and Herz."}
 state_assistance_perc['countryname'] = state_assistance_perc['countryname'].replace(replacement_dict)
 state_assistance_perc = state_assistance_perc.rename(columns={'countryname': 'name'})
 
@@ -28,11 +23,13 @@ state_assistance_perc = state_assistance_perc.rename(columns={'countryname': 'na
 # and defines a list of countries in Eurasia that were formerly part of the USSR or had post-communist governments.
 
 world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
+replacement_dict = {'Czechia': "Czech Rep",  "Slovakia": "Slovak Rep"}
+world['name'] = world['name'].replace(replacement_dict)
 world = world[['name', 'continent', 'geometry', 'pop_est', 'gdp_md_est']]
-ex_communist_eurasia = ['Russia', 'Ukraine', 'Belarus', 'Kyrgyzstan', 'Azerbaijan', 'Tajikistan', 'Armenia', \
-           'Georgia', 'Kazakhstan', 'Lithuania', 'Latvia', 'Estonia', 'Uzbekistan', 'Bulgaria', 'Albania', 
-           'Moldova', 'Montenegro', 'Poland', 'Romania', 'North Macedonia', 'Serbia', 'Hungary',
-           'Slovak Republic', 'Slovenia', 'Bosnia and Herz.', 'Czechia', 'Croatia']
+ex_communist_eurasia = ['Albania', 'Bulgaria', 'Croatia', 'Czech Rep', 'Estonia', 'Georgia','Hungary', 
+                        'Latvia', 'Lithuania', 'North Macedonia', 'Moldova' ,'Montenegro', 'Poland', 'Romania', 
+                        'Serbia', 'Slovak Rep', 'Slovenia', 'Ukraine', 'Belarus', 'Russia', 'Bosnia and Herz.', 
+                        'Armenia', 'Azerbaijan', 'Kazakhstan', 'Kyrgyzstan', 'Tajikistan', 'Uzbekistan']
     
 #%% In this part of the code, I create variable 'eurasia' that contains geometry and necassary variables
 #of the countries of interest. After that, manipulate projections to fit all selected countries on the map in the right position.
@@ -48,10 +45,11 @@ eurasia_proj = eurasia.to_crs(proj_lcc)
 # I plot the map to check if all went well 
 
 colors = plt.cm.Set1(range(len(eurasia)))
-ax = eurasia_proj.plot(figsize=(10, 10), column='name', cmap='Set1', edgecolor='black', linewidth=0.5)
+ax = eurasia_proj.plot(figsize=(10, 10), column='name', cmap='Greys', edgecolor='black', linewidth=0.5)
 ax.set_title('Post-Communist Countries in Europe and Central Asia')
 ax.set_facecolor('white')  # setting the background color to white
 ax.set_axis_off()  # hidding the axis lines and labels
+
 
 #%% Next, I merge stata_assistance_perc dataframe to the shapefile
 

@@ -54,8 +54,11 @@ val_statemp = filtered_df['q602b3a1'].value_counts(dropna=False) #state owned ve
 #georgia_df = filtered_df.loc[filtered_df.index == 'georgia']
 #al_statemp_geo = georgia_df['q602b3a1'].value_counts(dropna=False) #shows number of state employed, private employed and NAs
 #for Georgia only
-val_statemp_education = filtered_df['q501'].value_counts(dropna=False) #state owned versus not state owned job
-val_statemp_occupation = filtered_df['q405a'].value_counts(dropna=False) #state owned versus not state owned job
+val_statemp_education = filtered_df['q501'].value_counts(dropna=False) 
+val_statemp_occupation = filtered_df['q405a'].value_counts(dropna=False)
+filtered_df['q501'].value_counts(dropna=False)
+counts = filtered_df['q602b1a'].value_counts(dropna=False)
+
 
 
 #%% BUILDING NEW DATASET - The purpose of this script is to create dependent, independent 
@@ -104,6 +107,7 @@ conditions = [filtered_df['q501'].isin(['higher professional degree (university,
     filtered_df['q501'].isna()]
 choices = [1, np.nan]
 clean_df['Education'] = np.select(conditions, choices, default=0)
+clean_df['Education'].value_counts(dropna=False)
 
 
 #This code creates binary variable called Occupation that equals to 1 if value of
@@ -112,16 +116,14 @@ clean_df['Education'] = np.select(conditions, choices, default=0)
 clean_df['Occupation'] = filtered_df['q602b1a'].apply(lambda x: 1 if x in 
                                                     ['professionals', 'technicians and associated professionals', 'legislator, senior official, manager']
                                                     else 0 if pd.notna(x) else np.nan)
+clean_df['Occupation'].value_counts(dropna=False)
+
 
 #This code creates binary variable called MiddleClass that equals 1 if both 
 #Education and Occupation equals , ) if either Education or Occupation = 0 and keeps missing values as Nans
-conditions = [    (clean_df['Occupation'] == 1) & (clean_df['Education'] == 1),
-    (clean_df['Occupation'] == 0) | (clean_df['Education'] == 0),]
-
+conditions = [(clean_df['Occupation'] == 1) & (clean_df['Education'] == 1), (clean_df['Occupation'] == 0) | (clean_df['Education'] == 0),]
 choices = [1, 0]
-
 clean_df['MiddleClass'] = np.select(conditions, choices, default=np.nan)
-
 clean_df['MiddleClass'].value_counts(dropna=False)
 
 #%% CONTROL VARIABLES
@@ -134,9 +136,13 @@ clean_df["Expenditures"] = filtered_df["exp_ae"]
 #the country; 1-poorest and 10-richest
 clean_df["IncDist"] = filtered_df["q211"] 
 clean_df["IncDist"].replace(66, np.nan, inplace=True) # In that particular case, answer 'don't know'
+clean_df["IncDist"].value_counts(dropna=False)
 # is coded as 66, so I replace 66 with missing values
 clean_df['FreeMarket_Support'] = filtered_df["q310"].apply(lambda x: 1 if x == "market economy preferable"
                                                                       else 0 if pd.notna(x) else np.nan)
+clean_df['stateemployment'] = filtered_df["q408a1"] #alternative stateemployment that takes into consideration
+#previous jobs
+
 #%% BUILDING VARIABLE SOCIAL ASSISTANCE
 
 clean_df['state_assistance'] = np.nan

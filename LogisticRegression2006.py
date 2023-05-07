@@ -433,7 +433,7 @@ plt.xlabel(' ')
 plt.ylabel('Probability')
 plt.xticks(ticks=probability_melt['x'].unique(), labels=probability_melt['category'].unique())
 # Adding title
-plt.title("Exploring the Relationship Between Socio-Economic Factors \nand Democracy Support: Predicted Probabilities Analysi", loc='center')
+plt.title("Exploring the Relationship Between Socio-Economic Factors \nand Democracy Support: Predicted Probabilities Analysis", loc='center')
 
 plt.savefig('probability_plot.png', dpi=300)
 # Show the plot
