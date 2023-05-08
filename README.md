@@ -24,7 +24,17 @@ The dependent variable 'democracy' is a product of 'democracysupport' and 'insts
 To define the middle class, I adopt the author's approach, identifying middle-class individuals as upper- or lower-level managers, professionals, or small-business owners who have graduated from a four-year college or university. This study employs a sociological definition of the middle class (Fitzgerald, 2012), rather than an income-based definition, for several reasons.
 
 First, during the early 2000s, official salaries in transition economies often failed to accurately reflect an individual's income due to the widespread presence of informal job markets (Lehmann & Pignatti, 2007). Second, utilizing an income-based definition in post-communist countries could be challenging because corruption was rampant, and people often obtained money from illegal sources, which they might not self-report in surveys. Lastly, social desirability bias might lead some respondents to report higher salaries than they actually earned. By using a sociological definition of the middle class, I mitigate the potential inaccuracies that might arise from relying on income-based definitions in the context of post-communist countries with extensive informal economies and corruption.
- 
+
 To operationalize middle class, I code 'education' as one for individuals with a university or postgraduate degree and zero otherwise. We code 'occupation' as one for individuals who fall under three categories: technicians & associate professionals, professionals, and managers, and zero otherwise. The independent variable 'middleclass' is a product of the 'education' and 'occupation' variables.
 
 ### State Employment
+I code 'state employment' as one for individuals employed in the state sector and zero otherwise. Additionally, I create sub-groups of state employment, including state-employed educators, health professionals, and administrators to explore differences in regime preferences for seperate groups.
+
+### State Assistance
+I code 'state assistance' as one for individuals who received state-provided benefits, such as unemployment allowance, social assistance, and disability benefits, and zero otherwise.
+
+### Control Variables
+To account for differences in regime preferences across age groups, I include age and age squared as control variables. Additionally, I control for gender to account for any potential differences in regime preferences or state employment.
+
+## Descriptive Statistics on Post-Communist Countries 
+
