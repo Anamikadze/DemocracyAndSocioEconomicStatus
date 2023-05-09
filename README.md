@@ -66,8 +66,7 @@ The code performs the following tasks:
 
 **Note**: Detailed comments on building logistic regression model, fitting on the data and displaying marginal effects are available in the script file.
 
-Two alternative scripts are [AlternativeDefinitionofDemocracy.py](Regression_Alternative_Definiton_Democracy/AlternativeDefinitionofDemocracy.py) and [AlternativeDemocracy_Regression.py](Regression_Alternative_Definiton_Democracy/AlternativeDemocracy_Regression.py). The first scipt changes the definition of democracy to include individuals who 'shomewhat' agree that democratic institutions are important and produces alternative csv file, called
-
+Two alternative scripts are [AlternativeDefinitionofDemocracy.py](Additional_Scripts/AlternativeDefinitionofDemocracy.py) and [AlternativeDemocracy_Regression.py](Additional_Scripts/AlternativeDemocracy_Regression.py). he first script modifies the definition of democracy to encompass individuals who 'somewhat' agree that democratic institutions are important, generating an alternative CSV file, [Cleaned Dataset 2006 - Alternative Definition](./Additional_Scripts/cleaned_dataset2006_alt.csv). The second script constructs, fits, and executes a logistic regression using this alternative definition of democracy. The steps in this script follow the same logic as the main regression script.
 
 ## Results
 
@@ -94,5 +93,9 @@ Figure 4 displays the proportion of state assistance recipients in all 27 post-c
 ![Figure 5: Predicted Probabilities](Visualizations/PredictedProbabilities@4x.png)
 
 Figure 5 presents the predicted probabilities of democracy support across three socio-economic groups, based on the logistic regression analysis. In democratic countries, the middle class displays higher support for democracy, irrespective of the sector. However, in non-democratic nations, the positive effect on democracy support weakens among the middle class reliant on the autocratic state. Notably, the private-sector middle class exhibits a substantially higher likelihood of supporting democracy compared to their public-sector counterparts. State assistance recipients demonstrate lower support for democracy in both non-democratic and democratic samples. This effect is markedly more pronounced in non-democratic countries, where the probability of supporting democracy is drastically lower compared to democracies.
+
+![Figure 6: Predicted Probabilities](Visualizations/PredictedProbabilities_Alt.png)
+
+Figure 6 presents the predicted probabilities of democracy support using the relaxed definition of democracy. Despite the alternative definition, the findings remain consistent: in non-democracies, only the private sector middle class exhibits increased support for democracy. As anticipated, the overall probability of democracy support rises for each group due to the broader interpretation of democracy. However, the overall narrative remains unchanged.
 
 
