@@ -36,17 +36,17 @@ There are five scrips that need to be run:
 - Preprocessing the data: The code sets the 'countryname' column as the index of the merged DataFrame, filters out Turkey and Mongolia, and explores the data to get a sense of its structure.
 - Building new dataset: The code creates a new DataFrame and generates dependent, independent, and control variables to be used in future analyses. These variables include state employment, state assistance, democracy support, middle class, age, gender, expenditures, and more.
 - Creating interaction term: The code creates an interaction term between middle class and state employment, which can be used for regression analysis.
-- Saving the cleaned data: The cleaned and transformed dataset is saved as a CSV file (cleaned_dataset2006.csv) with the 'countryname' as the index label.
+- Saving the cleaned data: The cleaned and transformed dataset is saved as a CSV file [Cleaned Dataset 2006](cleaned_dataset2006.csv) with the 'countryname' as the index label.
 
-[MapOfStateEmployement_2006.py](./MapOfStateEmployement_2006.py): This code analyzes and visualizes employment, state assistance, and middle-class employment trends in post-communist countries using the LITS2006 dataset.
+[StateEmploymentAndAssistance2006.py](./StateEmploymentAndAssistance2006.py): This code analyzes and visualizes employment, state assistance, and middle-class employment trends in post-communist countries using the LITS2006 dataset.
 
 The code performs the following tasks:
 
 - Imports the necessary libraries, including numpy, pandas, seaborn, and matplotlib.
 - Loads the dataset, capitalize country names, and correct specific country names using a replacement dictionary.
-- Calculates the share of public employment per country, and save the result as a CSV file.
+- Calculates the share of public employment per country, and save the result as a CSV file, [state_employment_perc.csv](state_employment_perc.csv)
 - Calculates the average percentage of public employment in democratic and non-democratic countries, and create a bar chart to visualize the comparison.
-- Calculates the percentage of the sample that depends on state-provided assistance, and save the result as a CSV file.
+- Calculates the percentage of the sample that depends on state-provided assistance, and save the result as a CSV file, [state_assistance_perc.csv](state_assistance_perc.csv)
 - Creates a scatter plot to visualize the relationship between state employment share and state assistance share in post-communist Europe and calculates the share of public employment in the middle class for each country, and compare the average share between democratic and non-democratic countries.
 
 [MapOfStateEmployement_2006.py](./MapOfStateEmployement_2006.py) and [MapOfStateAssistance2006.py](./MapOfStateAssistance2006.py): Two Python scripts that visualize the share of state-provided assistance and public employment in post-communist countries in Europe and Central Asia. The data is represented using heatmaps based on geographical boundaries of the countries. The heatmaps are generated using the GeoPandas, Pandas, and Matplotlib libraries.
@@ -62,7 +62,9 @@ The code performs the following tasks:
 
 - Finally, the script uses the seaborn and matplotlib libraries to create a scatterplot with error bars. This plot displays the predicted probabilities of supporting democracy for different socio-economic scenarios.
 
-## Descriptive Statistics on Post-Communist Countries 
+**Note**: Detailed comments on building logistic regression model, fitting on the data and displaying marginal effects are available in the script file.
+
+## Results
 
 Following the collapse of the Soviet Union and the subsequent transformation of communist regimes in European countries, free market economies and private businesses began to emerge and develop. However, even 15 years after the dissolution of the Soviet Union, the state remained a significant employer in many of these countries. 
 
@@ -74,15 +76,18 @@ The figure one presents the average percentage of public employment in democrati
 
 Among non-democratic countries, Azerbaijan, Belarus, and Uzbekistan exhibited the highest shares of public employment at 75%, 74%, and 63%, respectively. In contrast, the Czech Republic, Hungary, and Latvia demonstrated the lowest shares at 30%, 31.5%, and 33%, respectively. Notably, Georgia and Ukraine, classified as on the verge of democracy in early 2006, displayed relatively higher shares of public employment at 58.5% and 51%, respectively, compared to other democratic countries.
 
-The reasons for such considerable variations in the shares of public employment among countries are multifaceted. In some cases, such as Georgia, Bosnia and Herzegovina and Tajikistant (Pomfret, R., 2006), wars and political instability hindered the development of the private sector. In other instances, like Russia, inadequate protections and regulations failed to support a fair and transparent privatization process (Miller, 2018). On the other hand, European Union membership and a relatively stable political environment facilitated private sector development in countries including the Baltic states, Hungary, the Czech Republic, and Poland (Åslund, 2008).
-
 The middle class holds significant importance in the economic and political development of a nation. In post-communist countries, understanding the relationship between the middle class and the state is crucial, as public employment still remained a primary avenue for individuals seeking to attain social and economic status 15 years after the Soviet Union's collapse. 
 
 <img src="Visualizations/PublicEmploymentShareMiddleClass.png" alt="Figure 3: Share of Public Employment By Country" width="70%" height="70%">
 
 The data presented in the figure three highlights that the middle class relies heavily on public employment in both democratic and non-democratic post-communist countries. However, this dependency is more pronounced in autocratic nations. For instance, in Belarus, almost one in every eight middle-class individuals works in the public sector. On average, one in every six middle-class citizens is employed by the state sector in non-democratic countries. In comparison, the proportion of middle-class individuals employed by the public sector is relatively lower in democracies, with approximately 40% of the middle class working in this sector.
 
-In autocratic countries, the state often serves as the primary employer for various societal classes, including the middle class. This phenomenon can be attributed to the fact that loyalty to the autocratic state is often one of the most viable options for individuals seeking to attain a certain social and economic status within society. As suggested by the author of the original study, the control of autocrats over public-sector employment serves as a crucial instrument for managing the economic self-interest and loyalty of citizens, particularly among the middle class (Rosenfeld, 2020).
+![Figure 4: Share of State Provided Assistance by Country](Visualizations/Heatmap_map_assistance.png)
 
+Figure 4 displays the proportion of state assistance recipients in all 27 post-communist countries. These individuals rely on welfare, disability benefits, and social assistance from the state. Although this group represents relatively small portion of the overall population, it is most dependent on the state.  In non-democratic countries, 69% of state assistance recipients depend solely on state-provided financial aid as their only income source. Additionally, they are less likely to own land, a dwelling, or a car.
+
+![Figure 5: Predicted Probabilities](Visualizations/PredictedProbabilities@4x.png)
+
+Figure 5 presents the predicted probabilities of democracy support across three socio-economic groups, based on the logistic regression analysis. In democratic countries, the middle class displays higher support for democracy, irrespective of the sector. However, in non-democratic nations, the positive effect on democracy support weakens among the middle class reliant on the autocratic state. Notably, the private-sector middle class exhibits a substantially higher likelihood of supporting democracy compared to their public-sector counterparts. State assistance recipients demonstrate lower support for democracy in both non-democratic and democratic samples. This effect is markedly more pronounced in non-democratic countries, where the probability of supporting democracy is drastically lower compared to democracies.
 
 
