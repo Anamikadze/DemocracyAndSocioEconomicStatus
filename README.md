@@ -39,7 +39,7 @@ To account for differences in regime preferences across age groups, I include ag
 ## Descriptive Statistics on Post-Communist Countries 
 Following the collapse of the Soviet Union and the subsequent transformation of communist regimes in European countries, free market economies and private businesses began to emerge and develop. However, even 15 years after the dissolution of the Soviet Union, the state remained a significant employer in many of these countries. 
 
-![Figure 1: State Employment Comparison](Visualizations/state_employment_comparison.png)
+<img src="Visualizations/state_employment_comparison.png" alt="Figure 1: State Employment Comparison" width="50%" height="50%">
 
 The figure one presents the average percentage of public employment in democratic and non-democratic countries in 2006. The data reveals that public employment constituted approximately 42% of total employment in democratic countries, compared to nearly 60% in non-democratic countries. The Figure two shows share of public employment in all 27 countries.
 
