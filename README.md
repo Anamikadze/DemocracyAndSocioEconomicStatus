@@ -28,7 +28,9 @@ Control Variables: to account for differences in regime preferences across age g
 
 ## Output Files
 
-There are five scrips that need to be run: 
+This project requires running five main scripts and two additional scripts. The five main scripts are responsible for data cleaning, defining variables of interest, creating visualizations, and performing regression. The two additional scripts are used to generate an alternative (relaxed) definition of democracy and conduct the corresponding regression analysis. If you are interested in exploring results for rigid refinition of democracy, you DO NOT need to run two additional scripts. 
+
+Five main scripts:
 
 [PreparingDataForRegression.py](./PreparingDataForRegression.py): This code performs several tasks on the LITS2006 dataset. The main objectives are to clean, preprocess, and transform the dataset for further analysis. The code consists of the following steps:
 
@@ -63,6 +65,9 @@ The code performs the following tasks:
 - Finally, the script uses the seaborn and matplotlib libraries to create a scatterplot with error bars. This plot displays the predicted probabilities of supporting democracy for different socio-economic scenarios.
 
 **Note**: Detailed comments on building logistic regression model, fitting on the data and displaying marginal effects are available in the script file.
+
+Two alternative scripts are [AlternativeDefinitionofDemocracy.py](Regression_Alternative_Definiton_Democracy/AlternativeDefinitionofDemocracy.py) and [AlternativeDemocracy_Regression.py](Regression_Alternative_Definiton_Democracy/AlternativeDemocracy_Regression.py). The first scipt changes the definition of democracy to include individuals who 'shomewhat' agree that democratic institutions are important and produces alternative csv file, called
+
 
 ## Results
 
