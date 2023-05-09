@@ -9,6 +9,42 @@ For the purpose of our analysis, I divide the data into two sub-samples: democra
 
 While the original study's author does not explicitly state the index or method used for classifying the countries, my research indicates that the classification aligns with the Economist Intelligence Unit's Democracy Index (Economist Intelligence Unit. (2006). Democracy Index. Retrieved from https://rb.gy/8t1h1). The democratic sub-sample encompasses full democracies and flawed democracies, while the non-democratic sub-sample includes hybrid and authoritarian regimes. Notably, Georgia and Ukraine were classified as hybrid regimes by the Economist Democracy Index in 2006. However, the author acknowledges that these countries were on the cusp of democracy and includes them in the democratic sub-sample; I follow the same approach in my analysis.
 
+## Output Files
+
+There are five scrips that need to be run: 
+
+[PreparingDataForRegression.py](./PreparingDataForRegression.py): This code performs several tasks on the LITS2006 dataset. The main objectives are to clean, preprocess, and transform the dataset for further analysis. The code consists of the following steps:
+
+- Merging original CSV files: The code reads four separate CSV files (LITS2006_1.csv, LITS2006_2.csv, LITS2006_3.csv, and LITS2006_5.csv), stores them as Pandas DataFrames, and merges them based on their common index column.
+- Preprocessing the data: The code sets the 'countryname' column as the index of the merged DataFrame, filters out Turkey and Mongolia, and explores the data to get a sense of its structure.
+- Building new dataset: The code creates a new DataFrame and generates dependent, independent, and control variables to be used in future analyses. These variables include state employment, state assistance, democracy support, middle class, age, gender, expenditures, and more.
+- Creating interaction term: The code creates an interaction term between middle class and state employment, which can be used for regression analysis.
+- Saving the cleaned data: The cleaned and transformed dataset is saved as a CSV file (cleaned_dataset2006.csv) with the 'countryname' as the index label.
+
+[MapOfStateEmployement_2006.py](./MapOfStateEmployement_2006.py): This code analyzes and visualizes employment, state assistance, and middle-class employment trends in post-communist countries using the LITS2006 dataset.
+
+The code performs the following tasks:
+
+- Imports the necessary libraries, including numpy, pandas, seaborn, and matplotlib.
+- Loads the dataset, capitalize country names, and correct specific country names using a replacement dictionary.
+- Calculates the share of public employment per country, and save the result as a CSV file.
+- Calculates the average percentage of public employment in democratic and non-democratic countries, and create a bar chart to visualize the comparison.
+- Calculates the percentage of the sample that depends on state-provided assistance, and save the result as a CSV file.
+- Creates a scatter plot to visualize the relationship between state employment share and state assistance share in post-communist Europe and calculates the share of public employment in the middle class for each country, and compare the average share between democratic and non-democratic countries.
+
+[MapOfStateEmployement_2006.py](./MapOfStateEmployement_2006.py) and [MapOfStateAssistance2006.py](./MapOfStateAssistance2006.py): Two Python scripts that visualize the share of state-provided assistance and public employment in post-communist countries in Europe and Central Asia. The data is represented using heatmaps based on geographical boundaries of the countries. The heatmaps are generated using the GeoPandas, Pandas, and Matplotlib libraries.
+
+- Heatmap_map_assistance.py: this script reads a CSV file state_assistance_perc.csv, which contains the share of state-provided assistance for each country. The script then loads a shapefile of world countries using GeoPandas and selects only the countries of interest. The countries are then projected onto a Lambert Conformal Conic projection to fit all the countries in the right position on the map. The share of state-provided assistance is then merged with the shapefile, and a heatmap is created using the 'Blues' colormap.
+- Heatmap_Emp.py: this script is similar to the first one, but instead, it reads a CSV file state_employment_perc.csv, which contains the share of public employment for each country. The script then follows the same process as the first one: loading the shapefile, selecting countries of interest, projecting the map, and merging the data. A heatmap is created using the 'Reds' colormap to represent the share of public employment.
+
+[LogisticRegression2006.py](./LogisticRegression2006.py): This code is a Python script that imports necessary libraries, loads a cleaned dataset, and performs logistic regression to predict the probability of being in a democracy based on several factors. The factors include employment status, middle class status, state assistance, age, and gender.
+
+- The script first prepares the data by filtering relevant columns and creating interaction terms. It then runs logistic regression on the full sample, which includes both democratic and non-democratic countries. The script calculates predicted probabilities for three different scenarios: middle class and privately employed, middle class and state-employed, and recipients of state assistance.
+
+- Next, the code perfroms the same steps on two sub-samples: democratic and non democratic countries and calculatess rpedicted probabilities for supporting democracy. 
+
+- Finally, the script uses the seaborn and matplotlib libraries to create a scatterplot with error bars. This plot displays the predicted probabilities of supporting democracy for different socio-economic scenarios.
+
 ## Methodology and Variables
 This study aims to explain regime preferences across 27 countries, focusing on the relationship between socio-economic dependency on state and support for democracy.
 
