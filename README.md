@@ -39,9 +39,13 @@ To account for differences in regime preferences across age groups, I include ag
 ## Descriptive Statistics on Post-Communist Countries 
 Following the collapse of the Soviet Union and the subsequent transformation of communist regimes in European countries, free market economies and private businesses began to emerge and develop. However, even 15 years after the dissolution of the Soviet Union, the state remained a significant employer in many of these countries. 
 
-![State employment](Data Visualizations/MapOfStateEmployement_2006.png)
+![Figure 1: State Employment Comparison](Visualizations/state_employment_comparison.png)
 
-The figure presents the average percentage of public employment in democratic and non-democratic countries in 2006. The data reveals that public employment constituted approximately 42% of total employment in democratic countries, compared to nearly 60% in non-democratic countries. Among non-democratic countries, Azerbaijan, Belarus, and Uzbekistan exhibited the highest shares of public employment at 75%, 74%, and 63%, respectively. In contrast, the Czech Republic, Hungary, and Latvia demonstrated the lowest shares at 30%, 31.5%, and 33%, respectively. Notably, Georgia and Ukraine, classified as on the verge of democracy in early 2006, displayed relatively higher shares of public employment at 58.5% and 51%, respectively, compared to other democratic countries.
+The figure one presents the average percentage of public employment in democratic and non-democratic countries in 2006. The data reveals that public employment constituted approximately 42% of total employment in democratic countries, compared to nearly 60% in non-democratic countries. The Figure two shows share of public employment in all 27 countries.
+
+![Figure 1: State Employment Comparison](Visualizations/Heatmap_Emp.png)
+
+Among non-democratic countries, Azerbaijan, Belarus, and Uzbekistan exhibited the highest shares of public employment at 75%, 74%, and 63%, respectively. In contrast, the Czech Republic, Hungary, and Latvia demonstrated the lowest shares at 30%, 31.5%, and 33%, respectively. Notably, Georgia and Ukraine, classified as on the verge of democracy in early 2006, displayed relatively higher shares of public employment at 58.5% and 51%, respectively, compared to other democratic countries.
 
 The reasons for such considerable variations in the shares of public employment among countries are multifaceted. In some cases, such as Georgia, Bosnia and Herzegovina and Tajikistant (Pomfret, R., 2006), wars and political instability hindered the development of the private sector. In other instances, like Russia, inadequate protections and regulations failed to support a fair and transparent privatization process (Miller, 2018). On the other hand, European Union membership and a relatively stable political environment facilitated private sector development in countries including the Baltic states, Hungary, the Czech Republic, and Poland (Åslund, 2008).
 
