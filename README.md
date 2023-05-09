@@ -8,6 +8,7 @@ For the purpose of our analysis, I divide the data into two sub-samples: democra
 (N = 18) and non-democratic countries (N = 9). The democratic countries in the sample include Albania, Bulgaria, Croatia, Czech Republic, Estonia, Georgia, Hungary, Latvia, Lithuania, Macedonia, Moldova, Montenegro, Poland, Romania, Serbia, Slovak Republic, Slovenia, and Ukraine. Non-democratic countries consist of Azerbaijan, Armenia, Belarus, Kazakhstan, Kyrgyzstan, Russia, Tajikistan, and Uzbekistan.
 
 While the original study's author does not explicitly state the index or method used for classifying the countries, my research indicates that the classification aligns with the Economist Intelligence Unit's Democracy Index (Economist Intelligence Unit. (2006). Democracy Index. Retrieved from https://rb.gy/8t1h1). The democratic sub-sample encompasses full democracies and flawed democracies, while the non-democratic sub-sample includes hybrid and authoritarian regimes. Notably, Georgia and Ukraine were classified as hybrid regimes by the Economist Democracy Index in 2006. However, the author acknowledges that these countries were on the cusp of democracy and includes them in the democratic sub-sample; I follow the same approach in my analysis.
+
 ## Methodology and Variables
 This study aims to explain regime preferences across 27 countries, focusing on the relationship between socio-economic dependency on state and support for democracy.
 
@@ -27,26 +28,34 @@ First, during the early 2000s, official salaries in transition economies often f
 
 To operationalize middle class, I code 'education' as one for individuals with a university or postgraduate degree and zero otherwise. We code 'occupation' as one for individuals who fall under three categories: technicians & associate professionals, professionals, and managers, and zero otherwise. The independent variable 'middleclass' is a product of the 'education' and 'occupation' variables.
 
-### State Employment
-I code 'state employment' as one for individuals employed in the state sector and zero otherwise. Additionally, I create sub-groups of state employment, including state-employed educators, health professionals, and administrators to explore differences in regime preferences for seperate groups.
+### Independent Variables
+State Employment: I code 'state employment' as one for individuals employed in the state sector and zero otherwise. Additionally, I create sub-groups of state employment, including state-employed educators, health professionals, and administrators to explore differences in regime preferences for seperate groups.
 
-### State Assistance
-I code 'state assistance' as one for individuals who received state-provided benefits, such as unemployment allowance, social assistance, and disability benefits, and zero otherwise.
+State Assistance: I code 'state assistance' as one for individuals who received state-provided benefits, such as unemployment allowance, social assistance, and disability benefits, and zero otherwise.
 
-### Control Variables
-To account for differences in regime preferences across age groups, I include age and age squared as control variables. Additionally, I control for gender to account for any potential differences in regime preferences or state employment.
+Control Variables: to account for differences in regime preferences across age groups, I include age and age squared as control variables. Additionally, I control for gender to account for any potential differences in regime preferences or state employment.
 
 ## Descriptive Statistics on Post-Communist Countries 
+
 Following the collapse of the Soviet Union and the subsequent transformation of communist regimes in European countries, free market economies and private businesses began to emerge and develop. However, even 15 years after the dissolution of the Soviet Union, the state remained a significant employer in many of these countries. 
 
-<img src="Visualizations/state_employment_comparison.png" alt="Figure 1: State Employment Comparison" width="50%" height="50%">
+<img src="Visualizations/state_employment_comparison.png" alt="Figure 1: State Employment Comparison" width="70%" height="70%">
 
 The figure one presents the average percentage of public employment in democratic and non-democratic countries in 2006. The data reveals that public employment constituted approximately 42% of total employment in democratic countries, compared to nearly 60% in non-democratic countries. The Figure two shows share of public employment in all 27 countries.
 
-![Figure 1: State Employment Comparison](Visualizations/Heatmap_Emp.png)
+![Figure 2: State Employment Comparison](Visualizations/Heatmap_Emp.png)
 
 Among non-democratic countries, Azerbaijan, Belarus, and Uzbekistan exhibited the highest shares of public employment at 75%, 74%, and 63%, respectively. In contrast, the Czech Republic, Hungary, and Latvia demonstrated the lowest shares at 30%, 31.5%, and 33%, respectively. Notably, Georgia and Ukraine, classified as on the verge of democracy in early 2006, displayed relatively higher shares of public employment at 58.5% and 51%, respectively, compared to other democratic countries.
 
 The reasons for such considerable variations in the shares of public employment among countries are multifaceted. In some cases, such as Georgia, Bosnia and Herzegovina and Tajikistant (Pomfret, R., 2006), wars and political instability hindered the development of the private sector. In other instances, like Russia, inadequate protections and regulations failed to support a fair and transparent privatization process (Miller, 2018). On the other hand, European Union membership and a relatively stable political environment facilitated private sector development in countries including the Baltic states, Hungary, the Czech Republic, and Poland (Åslund, 2008).
+
+The middle class holds significant importance in the economic and political development of a nation. In post-communist countries, understanding the relationship between the middle class and the state is crucial, as public employment still remained a primary avenue for individuals seeking to attain social and economic status 15 years after the Soviet Union's collapse. 
+
+<img src="Visualizations/PublicEmploymentShareMiddleClass.png" alt="Figure 3: Share of Public Employment By Country" width="70%" height="70%">
+
+The data presented in the figure three highlights that the middle class relies heavily on public employment in both democratic and non-democratic post-communist countries. However, this dependency is more pronounced in autocratic nations. For instance, in Belarus, almost one in every eight middle-class individuals works in the public sector. On average, one in every six middle-class citizens is employed by the state sector in non-democratic countries. In comparison, the proportion of middle-class individuals employed by the public sector is relatively lower in democracies, with approximately 40% of the middle class working in this sector.
+
+In autocratic countries, the state often serves as the primary employer for various societal classes, including the middle class. This phenomenon can be attributed to the fact that loyalty to the autocratic state is often one of the most viable options for individuals seeking to attain a certain social and economic status within society. As suggested by the author of the original study, the control of autocrats over public-sector employment serves as a crucial instrument for managing the economic self-interest and loyalty of citizens, particularly among the middle class (Rosenfeld, 2020).
+
 
 
